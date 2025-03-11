@@ -21,4 +21,5 @@ This project predicts a user's learning style (Visual, Auditory, Kinesthetic, or
    cd learning-style-predictor
    
 2. Install required dependencies
+   
 pip install -r requirements.txt
