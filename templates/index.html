@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Style Advisor</title>
+    <style>
+        /* CSS styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>Learning Style Advisor</h2>
+    <form action="/predict" method="post">
+        <!-- Gender question -->
+        <label>Gender:</label>
+        <div>
+            <input type="radio" name="gender" value="Male" required> Male
+            <input type="radio" name="gender" value="Female" required> Female
+        </div>
+
+        <!-- Age question -->
+        <label>Age:</label>
+        <input type="number" name="age" min="1" max="100" required>
+
+        <!-- 18 questions -->
+        <label>I learn better by reading what the teacher writes on the chalkboard?</label>
+        <div class="rating">
+            <input type="radio" name="feature1" value="1" required> 1
+            <input type="radio" name="feature1" value="2"> 2
+            <input type="radio" name="feature1" value="3"> 3
+            <input type="radio" name="feature1" value="4"> 4
+            <input type="radio" name="feature1" value="5"> 5
+        </div>
+
+        <label>When I read instructions, I remember them better?</label>
+        <div class="rating">
+            <input type="radio" name="feature2" value="1" required> 1
+            <input type="radio" name="feature2" value="2"> 2
+            <input type="radio" name="feature2" value="3"> 3
+            <input type="radio" name="feature2" value="4"> 4
+            <input type="radio" name="feature2" value="5"> 5
+        </div>
+
+        <label>I understand better when I read instructions?</label>
+        <div class="rating">
+            <input type="radio" name="feature3" value="1" required> 1
+            <input type="radio" name="feature3" value="2"> 2
+            <input type="radio" name="feature3" value="3"> 3
+            <input type="radio" name="feature3" value="4"> 4
+            <input type="radio" name="feature3" value="5"> 5
+        </div>
+
+        <label>I learn better by reading than by listening to someone?</label>
+        <div class="rating">
+            <input type="radio" name="feature4" value="1" required> 1
+            <input type="radio" name="feature4" value="2"> 2
+            <input type="radio" name="feature4" value="3"> 3
+            <input type="radio" name="feature4" value="4"> 4
+            <input type="radio" name="feature4" value="5"> 5
+        </div>
+
+        <label>I learn more by reading textbooks than by listening to lectures?</label>
+        <div class="rating">
+            <input type="radio" name="feature5" value="1" required> 1
+            <input type="radio" name="feature5" value="2"> 2
+            <input type="radio" name="feature5" value="3"> 3
+            <input type="radio" name="feature5" value="4"> 4
+            <input type="radio" name="feature5" value="5"> 5
+        </div>
+
+        <label>When the teacher tells me the instructions, I understand better?</label>
+        <div class="rating">
+            <input type="radio" name="feature6" value="1" required> 1
+            <input type="radio" name="feature6" value="2"> 2
+            <input type="radio" name="feature6" value="3"> 3
+            <input type="radio" name="feature6" value="4"> 4
+            <input type="radio" name="feature6" value="5"> 5
+        </div>
+
+        <label>When someone tells me how to do something in class, I learn it better?</label>
+        <div class="rating">
+            <input type="radio" name="feature7" value="1" required> 1
+            <input type="radio" name="feature7" value="2"> 2
+            <input type="radio" name="feature7" value="3"> 3
+            <input type="radio" name="feature7" value="4"> 4
+            <input type="radio" name="feature7" value="5"> 5
+        </div>
+
+        <label>I remember things I have heard in class better than things I have read?</label>
+        <div class="rating">
+            <input type="radio" name="feature8" value="1" required> 1
+            <input type="radio" name="feature8" value="2"> 2
+            <input type="radio" name="feature8" value="3"> 3
+            <input type="radio" name="feature8" value="4"> 4
+            <input type="radio" name="feature8" value="5"> 5
+        </div>
+
+        <label>I learn better in class when the teacher gives a lecture?</label>
+        <div class="rating">
+            <input type="radio" name="feature9" value="1" required> 1
+            <input type="radio" name="feature9" value="2"> 2
+            <input type="radio" name="feature9" value="3"> 3
+            <input type="radio" name="feature9" value="4"> 4
+            <input type="radio" name="feature9" value="5"> 5
+        </div>
+
+        <label>I learn better in class when I listen to someone?</label>
+        <div class="rating">
+            <input type="radio" name="feature10" value="1" required> 1
+            <input type="radio" name="feature10" value="2"> 2
+            <input type="radio" name="feature10" value="3"> 3
+            <input type="radio" name="feature10" value="4"> 4
+            <input type="radio" name="feature10" value="5"> 5
+        </div>
+
+        <label>I prefer to learn by doing something in class?</label>
+        <div class="rating">
+            <input type="radio" name="feature11" value="1" required> 1
+            <input type="radio" name="feature11" value="2"> 2
+            <input type="radio" name="feature11" value="3"> 3
+            <input type="radio" name="feature11" value="4"> 4
+            <input type="radio" name="feature11" value="5"> 5
+        </div>
+
+        <label>When I do things in class, I learn better?</label>
+        <div class="rating">
+            <input type="radio" name="feature12" value="1" required> 1
+            <input type="radio" name="feature12" value="2"> 2
+            <input type="radio" name="feature12" value="3"> 3
+            <input type="radio" name="feature12" value="4"> 4
+            <input type="radio" name="feature12" value="5"> 5
+        </div>
+
+        <label>I enjoy learning in class by doing experiments?</label>
+        <div class="rating">
+            <input type="radio" name="feature13" value="1" required> 1
+            <input type="radio" name="feature13" value="2"> 2
+            <input type="radio" name="feature13" value="3"> 3
+            <input type="radio" name="feature13" value="4"> 4
+            <input type="radio" name="feature13" value="5"> 5
+        </div>
+
+        <label>I understand things better in class when I participate in role-playing?</label>
+        <div class="rating">
+            <input type="radio" name="feature14" value="1" required> 1
+            <input type="radio" name="feature14" value="2"> 2
+            <input type="radio" name="feature14" value="3"> 3
+            <input type="radio" name="feature14" value="4"> 4
+            <input type="radio" name="feature14" value="5"> 5
+        </div>
+
+        <label>I learn best in class when I can participate in related activities?</label>
+        <div class="rating">
+            <input type="radio" name="feature15" value="1" required> 1
+            <input type="radio" name="feature15" value="2"> 2
+            <input type="radio" name="feature15" value="3"> 3
+            <input type="radio" name="feature15" value="4"> 4
+            <input type="radio" name="feature15" value="5"> 5
+        </div>
+
+        <label>I enjoy making things for class projects?</label>
+        <div class="rating">
+            <input type="radio" name="feature16" value="1" required> 1
+            <input type="radio" name="feature16" value="2"> 2
+            <input type="radio" name="feature16" value="3"> 3
+            <input type="radio" name="feature16" value="4"> 4
+            <input type="radio" name="feature16" value="5"> 5
+        </div>
+
+        <label>I learn better when I make something for a class project?</label>
+        <div class="rating">
+            <input type="radio" name="feature17" value="1" required> 1
+            <input type="radio" name="feature17" value="2"> 2
+            <input type="radio" name="feature17" value="3"> 3
+            <input type="radio" name="feature17" value="4"> 4
+            <input type="radio" name="feature17" value="5"> 5
+        </div>
+
+        <label>I prefer to learn by making models of things?</label>
+        <div class="rating">
+            <input type="radio" name="feature18" value="1" required> 1
+            <input type="radio" name="feature18" value="2"> 2
+            <input type="radio" name="feature18" value="3"> 3
+            <input type="radio" name="feature18" value="4"> 4
+            <input type="radio" name="feature18" value="5"> 5
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
