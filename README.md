@@ -19,3 +19,6 @@ This project predicts a user's learning style (Visual, Auditory, Kinesthetic, or
    ```bash
    git clone https://github.com/your-username/learning-style-predictor.git
    cd learning-style-predictor
+   
+2. Install required dependencies
+pip install -r requirements.txt
